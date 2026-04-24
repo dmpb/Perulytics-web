@@ -1,44 +1,93 @@
 # Perulytics Web
 
-Dashboard interactivo para visualizar tendencias electorales en tiempo real.
+Dashboard interactivo para visualizar en tiempo real las tendencias de la disputa electoral en Perú, con foco en la batalla por el segundo lugar entre los candidatos 10 y 35.
+
+> **Demo en vivo:** [perulytics-web.vercel.app](https://perulytics-web.vercel.app/)
 
 ## Vista previa
 
 ![Vista previa de Perulytics Web](images/dashboard-preview.png)
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Características
 
-## Getting Started
+- **Disputa 10 vs 35** como eje narrativo principal (diferencia de porcentaje, votos y momentum).
+- **Snapshots en tiempo real** con polling automático al backend de Perulytics.
+- **Estado de ingesta y avance de actas** siempre visible en el encabezado.
+- **UI oscura, moderna y minimalista** con efecto glassmorphism y acentos cromáticos por candidato.
+- Construido sobre **Next.js 16 + React 19 + Tailwind CSS 4** y **Recharts** para las visualizaciones.
 
-First, run the development server:
+## Stack
+
+- [Next.js 16](https://nextjs.org) (App Router)
+- [React 19](https://react.dev)
+- [Tailwind CSS 4](https://tailwindcss.com)
+- [Recharts](https://recharts.org)
+- TypeScript
+
+## Requisitos previos
+
+- Node.js 20 o superior
+- npm (o yarn / pnpm / bun)
+
+## Configuración
+
+Crea un archivo `.env.local` en la raíz del proyecto basándote en `.env.example`:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Variables disponibles:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Variable | Descripción |
+| --- | --- |
+| `NEXT_PUBLIC_API_BASE_URL` | URL base del backend de Perulytics (por defecto, el entorno de producción). |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Desarrollo local
 
-## Learn More
+Instala dependencias y arranca el servidor de desarrollo:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Abre [http://localhost:3000](http://localhost:3000) para ver el dashboard.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Scripts disponibles:
 
-## Deploy on Vercel
+```bash
+npm run dev     # Servidor de desarrollo
+npm run build   # Build de producción
+npm run start   # Sirve el build de producción
+npm run lint    # Linter (ESLint + next/core-web-vitals)
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Estructura del proyecto
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/
+├── _components/   # Componentes UI del dashboard
+├── _constants/    # Constantes compartidas (estilos por candidato, etc.)
+├── _hooks/        # Hooks de fetching y derivación de datos
+├── _types/        # Tipos TypeScript compartidos
+├── _utils/        # Formateadores y helpers
+├── api/           # Route handlers (proxy al backend)
+├── globals.css    # Estilos globales y utilidades glass
+├── layout.tsx     # Layout raíz
+└── page.tsx       # Dashboard principal
+```
+
+## Despliegue
+
+La aplicación está desplegada en Vercel: [perulytics-web.vercel.app](https://perulytics-web.vercel.app/).
+
+Para desplegar tu propia copia, la forma más sencilla es usar la [plataforma de Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme). Solo necesitas configurar la variable de entorno `NEXT_PUBLIC_API_BASE_URL` apuntando a tu backend de Perulytics.
+
+Más detalles en la [documentación de despliegue de Next.js](https://nextjs.org/docs/app/building-your-application/deploying).
+
+## Recursos
+
+- [Documentación de Next.js](https://nextjs.org/docs)
+- [Aprende Next.js](https://nextjs.org/learn)
+- [Repositorio de Next.js en GitHub](https://github.com/vercel/next.js)
