@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #eef1f7;
-  --foreground: #121826;
-  color-scheme: light;
+  --background: #070a14;
+  --foreground: #e7ebff;
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -24,41 +24,42 @@ body {
 body {
   background-image: radial-gradient(
       circle at 12% 18%,
-      rgba(238, 106, 8, 0.12),
+      rgba(238, 106, 8, 0.13),
       transparent 30%
     ),
-    radial-gradient(circle at 80% 35%, rgba(93, 189, 20, 0.1), transparent 32%),
-    radial-gradient(circle at 62% 78%, rgba(4, 109, 166, 0.1), transparent 35%);
+    radial-gradient(circle at 80% 35%, rgba(93, 189, 20, 0.08), transparent 32%),
+    radial-gradient(circle at 62% 78%, rgba(4, 109, 166, 0.14), transparent 35%),
+    linear-gradient(140deg, #070a14 8%, #0d1324 54%, #090f1d 100%);
   background-attachment: fixed;
 }
 
 .glass-card {
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.9),
-    rgba(255, 255, 255, 0.76)
+    rgba(13, 19, 36, 0.8),
+    rgba(9, 14, 28, 0.62)
   );
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .glass-chip {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(226, 232, 240, 0.95);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(16, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
 }
 
 .table-glass thead tr {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(15, 23, 42, 0.86);
 }
 
 .table-glass tbody tr:nth-child(odd) {
-  background: rgba(255, 255, 255, 0.66);
+  background: rgba(15, 23, 42, 0.58);
 }
 
 .table-glass tbody tr:nth-child(even) {
-  background: rgba(255, 255, 255, 0.42);
+  background: rgba(15, 23, 42, 0.38);
 }
