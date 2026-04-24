@@ -20,3 +20,11 @@ export function formatDateLabel(dateString?: string): string {
     timeStyle: "medium",
   }).format(date);
 }
+
+export function formatRelativeSeconds(dateString?: string | null): string {
+  if (!dateString) return "sin referencia";
+  const timestamp = new Date(dateString).getTime();
+  if (Number.isNaN(timestamp)) return "sin referencia";
+  const deltaSeconds = Math.max(0, Math.floor((Date.now() - timestamp) / 1000));
+  return `hace ${deltaSeconds}s`;
+}

@@ -24,7 +24,7 @@ export function VersusTable({
   return (
     <section className="glass-card rounded-2xl p-6">
       <div className="mb-2 flex flex-wrap items-center gap-3">
-        <h3 className="text-lg font-semibold text-zinc-900">
+        <h3 className="text-xl font-semibold text-zinc-900">
           Lopez Aliaga vs. Sanchez
         </h3>
         <span
@@ -32,7 +32,7 @@ export function VersusTable({
         >
           {gapClass}
         </span>
-        <p className="text-sm text-zinc-700">
+        <p className="text-sm text-zinc-700 tabular-nums">
           Brecha actual: <strong>{formatPercent(gapPercent)}</strong> (
           {formatNumber(gapVotes)} votos)
         </p>
@@ -43,60 +43,67 @@ export function VersusTable({
       </p>
       <div className="mt-4 overflow-x-auto rounded-xl border border-white/40 bg-white/25 p-2 backdrop-blur-md">
         <table className="table-glass min-w-full text-sm">
-          <thead>
+          <thead className="sticky top-0 z-10">
             <tr className="border-b border-zinc-200/70 text-left text-zinc-700">
-              <th className="px-3 py-2">Snapshot</th>
+              <th className="px-3 py-2" scope="col">Snapshot</th>
               <th
                 className="px-3 py-2"
                 style={{ color: CANDIDATE_STYLES[10].accent }}
+                scope="col"
               >
                 ● Votos
               </th>
               <th
                 className="px-3 py-2"
                 style={{ color: CANDIDATE_STYLES[10].accent }}
+                scope="col"
               >
                 ↗ Delta
               </th>
               <th
                 className="px-3 py-2"
                 style={{ color: CANDIDATE_STYLES[35].accent }}
+                scope="col"
               >
                 ● Votos
               </th>
               <th
                 className="px-3 py-2"
                 style={{ color: CANDIDATE_STYLES[35].accent }}
+                scope="col"
               >
                 ↗ Delta
               </th>
-              <th className="px-3 py-2">⚖ Ventaja</th>
+              <th className="px-3 py-2" scope="col">⚖ Ventaja</th>
             </tr>
           </thead>
           <tbody>
             {rows.map((row) => (
-              <tr key={row.timestamp} className="border-b border-white/30">
-                <td className="px-3 py-2">{formatDateLabel(row.timestamp)}</td>
-                <td className="px-3 py-2 font-medium text-zinc-800">
+              <tr
+                key={row.timestamp}
+                className="border-b border-slate-200/70 transition-colors hover:bg-slate-100/70"
+              >
+                <td className="px-3 py-2 tabular-nums text-zinc-800">{formatDateLabel(row.timestamp)}</td>
+                <td className="px-3 py-2 font-medium text-zinc-800 tabular-nums">
                   {formatNumber(row.votos10)}
                 </td>
                 <td
-                  className={`px-3 py-2 ${row.delta10 >= 0 ? "text-emerald-700" : "text-red-700"}`}
+                  className={`px-3 py-2 tabular-nums ${row.delta10 >= 0 ? "text-emerald-600" : "text-red-300"}`}
                 >
                   {row.delta10 >= 0 ? "▲" : "▼"}{" "}
                   {formatSignedNumber(row.delta10)}
                 </td>
-                <td className="px-3 py-2 font-medium text-zinc-800">
+                <td className="px-3 py-2 font-medium text-zinc-800 tabular-nums">
                   {formatNumber(row.votos35)}
                 </td>
                 <td
-                  className={`px-3 py-2 ${row.delta35 >= 0 ? "text-emerald-700" : "text-red-700"}`}
+                  className={`px-3 py-2 tabular-nums ${row.delta35 >= 0 ? "text-emerald-600" : "text-red-300"}`}
                 >
                   {row.delta35 >= 0 ? "▲" : "▼"}{" "}
                   {formatSignedNumber(row.delta35)}
                 </td>
                 <td
-                  className={`px-3 py-2 font-medium ${row.ventaja >= 0 ? "text-emerald-700" : "text-red-700"}`}
+                  className={`px-3 py-2 font-medium tabular-nums ${row.ventaja >= 0 ? "text-emerald-600" : "text-red-300"}`}
                 >
                   {row.ventaja >= 0 ? "◀" : "▶"}{" "}
                   {formatSignedNumber(row.ventaja)}

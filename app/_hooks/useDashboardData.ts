@@ -13,6 +13,7 @@ import { fetchJson } from "../_utils/fetch";
 type UseDashboardDataResult = {
   data: DashboardData | null;
   isLoading: boolean;
+  isRefreshing: boolean;
   error: string | null;
   lastRefresh: string | null;
 };
@@ -22,10 +23,12 @@ export function useDashboardData(
 ): UseDashboardDataResult {
   const [data, setData] = useState<DashboardData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [lastRefresh, setLastRefresh] = useState<string | null>(null);
 
   const loadData = useCallback(async () => {
+    setIsRefreshing(true);
     try {
       const [
         resultsPayload,
@@ -74,6 +77,7 @@ export function useDashboardData(
           : "No se pudieron obtener los datos del dashboard.",
       );
     } finally {
+      setIsRefreshing(false);
       setIsLoading(false);
     }
   }, [baseUrl]);
@@ -91,5 +95,5 @@ export function useDashboardData(
     };
   }, [loadData]);
 
-  return { data, isLoading, error, lastRefresh };
+  return { data, isLoading, isRefreshing, error, lastRefresh };
 }

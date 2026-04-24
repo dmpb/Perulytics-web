@@ -12,7 +12,8 @@ import { useDashboardData } from "./_hooks/useDashboardData";
 import { useDashboardDerived } from "./_hooks/useDashboardDerived";
 
 export default function Home() {
-  const { data, isLoading, error, lastRefresh } = useDashboardData();
+  const { data, isLoading, isRefreshing, error, lastRefresh } =
+    useDashboardData();
   const derived = useDashboardDerived(data);
 
   if (isLoading) {
@@ -40,16 +41,18 @@ export default function Home() {
   const latestRun = data.ingestion?.latestRun;
 
   return (
-    <main className="relative min-h-screen overflow-hidden px-4 py-8 md:px-6">
+    <main className="relative min-h-screen overflow-hidden bg-slate-50/80 pb-8 text-slate-900">
       <DashboardBackdrop />
 
-      <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-6">
-        <DashboardNav
-          candidate10={candidate10}
-          candidate35={candidate35}
-          currentSnapshotTimestamp={data.results.currentSnapshotTimestamp}
-        />
+      <DashboardNav
+        candidate10={candidate10}
+        candidate35={candidate35}
+        currentSnapshotTimestamp={data.results.currentSnapshotTimestamp}
+        lastRefresh={lastRefresh}
+        isRefreshing={isRefreshing}
+      />
 
+      <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 pt-28 md:px-6">
         <IngestionStatusCard
           latestSnapshot={latestSnapshot}
           latestRun={latestRun}
@@ -62,16 +65,6 @@ export default function Home() {
           gapPercent={gapPercent}
           gapVotes={gapVotes}
           rows={vsRows}
-        />
-
-        <NarrativeCard
-          leader={leader}
-          follower={follower}
-          gapPercent={gapPercent}
-          momentumDelta={momentumDelta}
-          candidate10={candidate10}
-          candidate35={candidate35}
-          lastRefresh={lastRefresh}
         />
       </div>
     </main>
