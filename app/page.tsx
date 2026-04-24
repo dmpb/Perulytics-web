@@ -6,7 +6,6 @@ import { DashboardNav } from "./_components/DashboardNav";
 import { ErrorState } from "./_components/ErrorState";
 import { IngestionStatusCard } from "./_components/IngestionStatusCard";
 import { LoadingState } from "./_components/LoadingState";
-import { NarrativeCard } from "./_components/NarrativeCard";
 import { VersusTable } from "./_components/VersusTable";
 import { useDashboardData } from "./_hooks/useDashboardData";
 import { useDashboardDerived } from "./_hooks/useDashboardDerived";
@@ -27,13 +26,10 @@ export default function Home() {
   const {
     candidate10,
     candidate35,
-    leader,
-    follower,
     gapPercent,
     gapVotes,
     gapClass,
-    momentumDelta,
-    vsRows,
+    vsRows, 
     candidateRows,
   } = derived;
 
@@ -52,7 +48,7 @@ export default function Home() {
         isRefreshing={isRefreshing}
       />
 
-      <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 pt-28 md:px-6">
+      <div className="relative mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 pt-38 md:px-6 md:pt-28">
         <IngestionStatusCard
           latestSnapshot={latestSnapshot}
           latestRun={latestRun}

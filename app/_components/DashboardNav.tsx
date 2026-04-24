@@ -64,9 +64,9 @@ export function DashboardNav({
   }, [isRefreshing, remainingSeconds]);
 
   return (
-    <nav className="fixed left-0 right-0 top-0 z-40 w-full border-b border-slate-200/80 bg-white/60 px-4 py-4 backdrop-blur-xl shadow-[0_10px_35px_rgba(15,23,42,0.12)] md:px-6">
-      <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3">
-        <div>
+    <nav className="fixed left-0 right-0 top-0 z-40 w-full border-b border-slate-200/80 bg-white/70 px-4 py-3 backdrop-blur-xl shadow-[0_10px_35px_rgba(15,23,42,0.12)] md:px-6">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 md:flex-row md:items-center md:justify-between md:gap-3">
+        <div className="min-w-0">
           <p className="text-sm font-semibold text-zinc-900">
             Perulytics | Presidenciales
           </p>
@@ -76,7 +76,7 @@ export function DashboardNav({
             {candidate10.nombreCandidato.split(" ").slice(0, 2).join(" ")}
           </p>
         </div>
-        <div className="flex flex-wrap gap-2 text-xs font-semibold text-zinc-700">
+        <div className="flex w-full flex-wrap gap-2 text-xs font-semibold text-zinc-700 md:w-auto">
           <span className="glass-chip rounded-full px-3 py-1 text-zinc-700">
             Ultimo snapshot: {formatDateLabel(currentSnapshotTimestamp)}
           </span>

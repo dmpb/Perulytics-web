@@ -1,3 +1,11 @@
+# Perulytics Web
+
+Dashboard interactivo para visualizar tendencias electorales en tiempo real.
+
+## Vista previa
+
+![Vista previa de Perulytics Web](images/dashboard-preview.png)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
