@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #eef1f7;
+  --foreground: #121826;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -12,15 +13,52 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+html,
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100%;
+}
+
+body {
+  background-image: radial-gradient(
+      circle at 12% 18%,
+      rgba(238, 106, 8, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(circle at 80% 35%, rgba(93, 189, 20, 0.1), transparent 32%),
+    radial-gradient(circle at 62% 78%, rgba(4, 109, 166, 0.1), transparent 35%);
+  background-attachment: fixed;
+}
+
+.glass-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.76)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.glass-chip {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.table-glass thead tr {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.table-glass tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.66);
+}
+
+.table-glass tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.42);
 }
